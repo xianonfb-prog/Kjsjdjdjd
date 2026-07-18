@@ -14,7 +14,6 @@ public class SoulstealerPlugin extends JavaPlugin {
     public NamespacedKey recipeKey;
     public NamespacedKey ownerKey;
 
-    // Cooldown tracker for the ability (Player UUID -> Expiration Time)
     public Map<UUID, Long> abilityCooldowns = new HashMap<>();
 
     @Override
@@ -27,6 +26,7 @@ public class SoulstealerPlugin extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new SwordListener(this), this);
         getCommand("soulstealer").setExecutor(new SwordCommand(this));
+        getCommand("ability").setExecutor(new SwordAbilityCommand(this));
 
         SwordManager.registerRecipe(this);
 
