@@ -2,6 +2,7 @@ package com.soulstealer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Keyed;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
@@ -66,7 +67,8 @@ public class SwordListener implements Listener {
     @EventHandler
     public void onPrepareCraft(PrepareItemCraftEvent event) {
         if (event.getRecipe() == null) return;
-        if (!event.getRecipe().getKey().equals(plugin.recipeKey)) return;
+        if (!(event.getRecipe() instanceof Keyed keyedRecipe)) return;
+        if (!keyedRecipe.getKey().equals(plugin.recipeKey)) return;
 
         Player player = (Player) event.getView().getPlayer();
 
