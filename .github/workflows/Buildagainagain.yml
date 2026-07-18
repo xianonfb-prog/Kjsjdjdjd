@@ -1,0 +1,32 @@
+name: Sort Files
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  sort:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sort files into Maven structure
+        run: |
+          mkdir -p src/main/java/com/soulstealer
+          mkdir -p src/main/resources
+
+          # Move plugin.yml into resources
+          if [ -f plugin.yml ]; then
+            mv plugin.yml src/main/resources/plugin.yml
+          fi
+
+          # Move every .java file sitting at the root into the source folder
+          for f in *.java; do
+            if [ -f "$f" ]; then
+              mv "$f" src/main/java/com/soulstealer/
+            fi
+          done
+
+      - name: List repo contents (debug)
+        run: find . -maxdepth 6 -not -path '*/.git*'
