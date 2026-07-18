@@ -7,3 +7,6 @@ commands:
   soulstealer:
     description: Gives the Soulstealer Sword
     usage: /soulstealer give
+  ability:
+    description: Activates the Soulstealer Sword's ability
+    usage: /ability
