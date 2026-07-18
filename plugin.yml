@@ -1,0 +1,9 @@
+name: Soulstealer
+version: 1.0
+main: com.soulstealer.SoulstealerPlugin
+api-version: '1.21'
+author: Soulstealer
+commands:
+  soulstealer:
+    description: Gives the Soulstealer Sword
+    usage: /soulstealer give
