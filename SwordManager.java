@@ -24,7 +24,7 @@ public class SwordManager {
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&5&lSoulstealer Sword"));
 
         List<String> lore = Arrays.asList(
-            ChatColor.GRAY + "Souls: " + souls + "/8",
+            ChatColor.GRAY + "Souls: " + souls + "/7",
             ChatColor.DARK_PURPLE + "Sharpness: " + getSharpnessName(souls)
         );
         meta.setLore(lore);
@@ -46,7 +46,6 @@ public class SwordManager {
 
     public static void registerRecipe(SoulstealerPlugin plugin) {
         ShapedRecipe recipe = new ShapedRecipe(plugin.recipeKey, createSword(0));
-        // 8 Wither Skeleton Skulls surrounding a Netherite Sword
         recipe.shape("WWW", "WSW", "WWW");
         recipe.setIngredient('W', Material.WITHER_SKELETON_SKULL);
         recipe.setIngredient('S', Material.NETHERITE_SWORD);
@@ -69,7 +68,7 @@ public class SwordManager {
         meta.getPersistentDataContainer().set(getPlugin().soulsKey, PersistentDataType.INTEGER, souls);
 
         List<String> lore = Arrays.asList(
-            ChatColor.GRAY + "Souls: " + souls + "/8",
+            ChatColor.GRAY + "Souls: " + souls + "/7",
             ChatColor.DARK_PURPLE + "Sharpness: " + getSharpnessName(souls)
         );
         meta.setLore(lore);
@@ -87,8 +86,8 @@ public class SwordManager {
 
     private static String getSharpnessName(int level) {
         if (level == 0) return "None";
-        String[] romans = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII"};
-        return level <= 8 ? romans[level - 1] : String.valueOf(level);
+        String[] romans = {"I", "II", "III", "IV", "V", "VI", "VII"};
+        return level <= 7 ? romans[level - 1] : String.valueOf(level);
     }
 
     private static SoulstealerPlugin getPlugin() {
